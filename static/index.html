@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus Calculator - Advanced Mathematical Computing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-symbol">∂</span>
+                <span class="logo-text">Calculus</span>
+            </div>
+            <div class="header-actions">
+                <button class="header-btn" id="githubBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3 class="sidebar-title">OPERATIONS</h3>
+                <nav class="operations-nav">
+                    <button class="operation-btn active" data-operation="derivative">
+                        <span class="op-icon">∂</span>
+                        <span class="op-text">Derivatives</span>
+                    </button>
+                    <button class="operation-btn" data-operation="integral">
+                        <span class="op-icon">∫</span>
+                        <span class="op-text">Integrals</span>
+                    </button>
+                    <button class="operation-btn" data-operation="limit">
+                        <span class="op-icon">lim</span>
+                        <span class="op-text">Limits</span>
+                    </button>
+                    <button class="operation-btn" data-operation="series">
+                        <span class="op-icon">Σ</span>
+                        <span class="op-text">Series</span>
+                    </button>
+                    <button class="operation-btn" data-operation="solve">
+                        <span class="op-icon">=</span>
+                        <span class="op-text">Equations</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Calculator Area -->
+            <main class="calculator">
+                <!-- Derivative Calculator -->
+                <div class="calculator-section active" id="derivative-section">
+                    <h1 class="calc-title">Derivative Calculator</h1>
+                    <p class="calc-subtitle">Calculate derivatives with symbolic computation</p>
+                    
+                    <div class="input-group">
+                        <label class="input-label">FUNCTION F(X)</label>
+                        <p class="input-hint">Use * for multiplication, ^ for powers</p>
+                        <input type="text" 
+                               class="function-input" 
+                               id="derivative-input" 
+                               placeholder="x^2 + 3*x + sin(x)"
+                               value="x^2 + 3*x + sin(x)">
+                        <div class="examples">
+                            <span class="examples-label">Examples:</span>
+                            <button class="example-btn" data-example="x^2 + 3*x">x² + 3x</button>
+                            <button class="example-btn" data-example="sin(x)*e^x">sin(x)·e^x</button>
+                            <button class="example-btn" data-example="x^3/(x^2+1)">x³/(x²+1)</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group small">
+                            <label class="input-label">VARIABLE</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="derivative-variable" 
+                                   value="x">
+                        </div>
+                        <div class="input-group small">
+                            <label class="input-label">ORDER</label>
+                            <select class="small-input" id="derivative-order">
+                                <option value="1">First Derivative</option>
+                                <option value="2">Second Derivative</option>
+                                <option value="3">Third Derivative</option>
+                                <option value="4">Fourth Derivative</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" data-calc="derivative">
+                        <span>CALCULATE</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Integral Calculator -->
+                <div class="calculator-section" id="integral-section">
+                    <h1 class="calc-title">Integral Calculator</h1>
+                    <p class="calc-subtitle">Compute indefinite and definite integrals</p>
+                    
+                    <div class="input-group">
+                        <label class="input-label">FUNCTION F(X)</label>
+                        <p class="input-hint">Use * for multiplication, ^ for powers</p>
+                        <input type="text" 
+                               class="function-input" 
+                               id="integral-input" 
+                               placeholder="e.g., x * sin(x)"
+                               value="x * sin(x)">
+                        <div class="examples">
+                            <span class="examples-label">Examples:</span>
+                            <button class="example-btn" data-example="x^2">x²</button>
+                            <button class="example-btn" data-example="sin(x)">sin(x)</button>
+                            <button class="example-btn" data-example="1/(x^2+1)">1/(x²+1)</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group small">
+                            <label class="input-label">VARIABLE</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="integral-variable" 
+                                   value="x">
+                        </div>
+                        <div class="input-group small">
+                            <label class="input-label">TYPE</label>
+                            <select class="small-input" id="integral-type">
+                                <option value="indefinite">Indefinite</option>
+                                <option value="definite">Definite</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="definite-inputs" id="definite-inputs" style="display: none;">
+                        <div class="input-row">
+                            <div class="input-group small">
+                                <label class="input-label">LOWER BOUND</label>
+                                <input type="text" 
+                                       class="small-input" 
+                                       id="integral-lower" 
+                                       value="0">
+                            </div>
+                            <div class="input-group small">
+                                <label class="input-label">UPPER BOUND</label>
+                                <input type="text" 
+                                       class="small-input" 
+                                       id="integral-upper" 
+                                       value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" data-calc="integral">
+                        <span>CALCULATE</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Limit Calculator -->
+                <div class="calculator-section" id="limit-section">
+                    <h1 class="calc-title">Limit Calculator</h1>
+                    <p class="calc-subtitle">Evaluate limits as x approaches any value</p>
+                    
+                    <div class="input-group">
+                        <label class="input-label">FUNCTION F(X)</label>
+                        <p class="input-hint">Use * for multiplication, ^ for powers</p>
+                        <input type="text" 
+                               class="function-input" 
+                               id="limit-input" 
+                               placeholder="e.g., sin(x)/x"
+                               value="sin(x)/x">
+                        <div class="examples">
+                            <span class="examples-label">Examples:</span>
+                            <button class="example-btn" data-example="sin(x)/x">sin(x)/x</button>
+                            <button class="example-btn" data-example="(1-cos(x))/x">(1-cos(x))/x</button>
+                            <button class="example-btn" data-example="1/x">1/x</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group small">
+                            <label class="input-label">VARIABLE</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="limit-variable" 
+                                   value="x">
+                        </div>
+                        <div class="input-group small">
+                            <label class="input-label">APPROACHES</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="limit-point" 
+                                   value="0">
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" data-calc="limit">
+                        <span>CALCULATE</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Series Calculator -->
+                <div class="calculator-section" id="series-section">
+                    <h1 class="calc-title">Series Calculator</h1>
+                    <p class="calc-subtitle">Taylor and Maclaurin series expansions</p>
+                    
+                    <div class="input-group">
+                        <label class="input-label">FUNCTION F(X)</label>
+                        <p class="input-hint">Use * for multiplication, ^ for powers</p>
+                        <input type="text" 
+                               class="function-input" 
+                               id="series-input" 
+                               placeholder="e.g., e^x"
+                               value="e^x">
+                        <div class="examples">
+                            <span class="examples-label">Examples:</span>
+                            <button class="example-btn" data-example="e^x">e^x</button>
+                            <button class="example-btn" data-example="sin(x)">sin(x)</button>
+                            <button class="example-btn" data-example="1/(1-x)">1/(1-x)</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group small">
+                            <label class="input-label">VARIABLE</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="series-variable" 
+                                   value="x">
+                        </div>
+                        <div class="input-group small">
+                            <label class="input-label">POINT</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="series-point" 
+                                   value="0">
+                        </div>
+                        <div class="input-group small">
+                            <label class="input-label">TERMS</label>
+                            <input type="number" 
+                                   class="small-input" 
+                                   id="series-terms" 
+                                   value="6"
+                                   min="2"
+                                   max="10">
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" data-calc="series">
+                        <span>CALCULATE</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Equation Solver -->
+                <div class="calculator-section" id="solve-section">
+                    <h1 class="calc-title">Equation Solver</h1>
+                    <p class="calc-subtitle">Solve equations symbolically</p>
+                    
+                    <div class="input-group">
+                        <label class="input-label">EQUATION (SET = 0)</label>
+                        <p class="input-hint">Enter the left side of the equation (right side is 0)</p>
+                        <input type="text" 
+                               class="function-input" 
+                               id="solve-input" 
+                               placeholder="e.g., x^2 - 4"
+                               value="x^2 - 4">
+                        <div class="examples">
+                            <span class="examples-label">Examples:</span>
+                            <button class="example-btn" data-example="x^2 - 4">x² - 4</button>
+                            <button class="example-btn" data-example="x^3 - 2*x + 1">x³ - 2x + 1</button>
+                            <button class="example-btn" data-example="sin(x)">sin(x)</button>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group small">
+                            <label class="input-label">VARIABLE</label>
+                            <input type="text" 
+                                   class="small-input" 
+                                   id="solve-variable" 
+                                   value="x">
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" data-calc="solve">
+                        <span>CALCULATE</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-container" id="results-container" style="display: none;">
+                    <div class="results-header">
+                        <h2 class="results-title">Solution</h2>
+                        <button class="close-results" id="closeResults">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="result-display" id="result-display"></div>
+
+                    <div class="steps-container" id="steps-container"></div>
+
+                    <div class="graph-container" id="graph-container" style="display: none;">
+                        <canvas id="graph-canvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Calculating...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div class="error-message" id="error-message" style="display: none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <p id="error-text"></p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
